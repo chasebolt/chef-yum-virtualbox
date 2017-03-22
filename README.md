@@ -14,8 +14,8 @@ The yum-virtualbox cookbook takes over management of the default repositoryids u
 The following attributes are set by default
 
 ```ruby
-default['yum']['virtualbox']['description'] = 'Oracle Linux / RHEL / CentOS-$releasever / $basearch - VirtualBox'
-default['yum']['virtualbox']['baseurl'] = 'http://download.virtualbox.org/virtualbox/rpm/el/$releasever/$basearch'
+default['yum']['virtualbox']['description'] = 'VirtualBox'
+default['yum']['virtualbox']['baseurl'] = "http://download.virtualbox.org/virtualbox/rpm/el/#{node['platform_version'].to_i}/$basearch"
 default['yum']['virtualbox']['gpgkey'] = 'https://www.virtualbox.org/download/oracle_vbox.asc'
 default['yum']['virtualbox']['gpgcheck'] = true
 default['yum']['virtualbox']['repo_gpgcheck'] = true
@@ -30,8 +30,8 @@ default['yum']['virtualbox']['managed'] = true
 
 ```ruby
   yum_repository 'virtualbox' do
-    baseurl 'http://download.virtualbox.org/virtualbox/rpm/el/$releasever/$basearch'
-    description 'Oracle Linux / RHEL / CentOS-$releasever / $basearch - VirtualBox'
+    baseurl "http://download.virtualbox.org/virtualbox/rpm/el/#{node['platform_version'].to_i}/$basearch"
+    description 'VirtualBox'
     enabled true
     gpgcheck true
     repo_gpgcheck true
